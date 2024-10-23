@@ -1,5 +1,6 @@
 package spring_projects.spring_project.dbexample.dao;
 
+import org.springframework.stereotype.Component;
 import spring_projects.spring_project.dbexample.model.Book;
 
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+@Component
 public class BookDAOBean {
     private final Connection connection;
 
