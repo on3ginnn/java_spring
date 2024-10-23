@@ -30,8 +30,6 @@ public class SpringProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-//		this.bookDAOBean.findBookById(2);
-
 		List<Book> bookList = jdbcTemplate.query("select * from books", ((rs, rowNum) -> new Book(
 				rs.getInt("id"),
 				rs.getString("title"),
