@@ -15,3 +15,6 @@ insert into public.books (title, author, date_added)
 values ('Братья Карамазовы', 'Ф.М. Достоевский', now() - interval '24h')
 
 select * from books
+
+select * from books where id = 1
+select * from books where id = 3

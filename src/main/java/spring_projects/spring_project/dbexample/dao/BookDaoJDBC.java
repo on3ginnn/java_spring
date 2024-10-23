@@ -15,11 +15,11 @@ public class BookDaoJDBC {
             }
 
             // Запрос к базе данных
-            String select = "select * from books where id = ?";
+            String select = "select * from books where id=?";
             PreparedStatement selectQuery = connection.prepareStatement(select);
             selectQuery.setInt(1, bookId);
             ResultSet resultSet = selectQuery.executeQuery();
-            System.out.println(resultSet);
+            System.out.println(resultSet.toString());
             // Создание и вывод объекта
             while (resultSet.next()){
                 System.out.println("f");
@@ -27,8 +27,9 @@ public class BookDaoJDBC {
                 book.setId(resultSet.getInt( "id"));
                 System.out.println(book.getId());
 
-                book.setAuthor(resultSet.getString("author"));
                 book.setTitle(resultSet.getString("title"));
+                book.setAuthor(resultSet.getString("author"));
+
                 book.setDateAdded(resultSet.getDate( "date_added"));
                 System.out.println(book);
             }
