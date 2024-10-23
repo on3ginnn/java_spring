@@ -1,13 +1,13 @@
 package spring_projects.spring_project.dbexample.dao;
 
 import spring_projects.spring_project.dbexample.model.Book;
+import spring_projects.spring_project.dbexample.db.DBConnection;
 import java.sql.*;
 
 public class BookDaoJDBC {
     public Book findBookById (Integer bookId) {
         // Создание подключения.
-        try (Connection connection = DriverManager
-                .getConnection("jdbc:postgresql://localhost:5433/nestor_db", "admin", "admin")) {
+        try (Connection connection = DBConnection.INSTANCE.getConnection()) {
             if (connection != null) {
                 System.out.println("Ура! Мы подключились к базе данных.");
             } else {

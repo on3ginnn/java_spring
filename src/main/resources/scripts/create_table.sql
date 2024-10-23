@@ -1,9 +1,9 @@
 create table books(
-    id          serial primary key,
-    title       varchar(30) not null,
-    author      varchar(30) not null,
-    date_added  timestamp not null
-)
+id serial primary key,
+title varchar(30) not null,
+author varchar(30) not null,
+date_added  timestamp not null
+);
 
 commit;
 
