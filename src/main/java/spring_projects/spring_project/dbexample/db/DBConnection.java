@@ -1,4 +1,4 @@
-package spring_projects.spring_project.dbexamples.db;
+package spring_projects.spring_project.dbexample.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,0 +1,11 @@
+  version: "3.9"
+  services:
+    postgres:
+      container_name: on3ginPostgresSQLDB
+      image: postgres
+      environment:
+        POSTGRES_DB: "on3gin_db"
+        POSTGRES_USER: "admin"
+        POSTGRES_PASSWORD: "admin"
+      ports:
+        - "5433:5432"

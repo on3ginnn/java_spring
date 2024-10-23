@@ -7,5 +7,5 @@ public interface DBConstants {
     String USER = "admin";
 
     String PASSWORD = "admin";
-    String PORT = "5333";
+    String PORT = "5433";
 }

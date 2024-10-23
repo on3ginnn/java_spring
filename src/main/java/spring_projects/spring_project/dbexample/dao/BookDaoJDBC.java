@@ -15,13 +15,13 @@ public class BookDaoJDBC {
             }
 
             // Запрос к базе данных
-            String select = "select * from public.books where id = ?";
-            PreparedStatement selectQuery = connection.prepareStatement(select); // Подготовка зaпроса
+            String select = "select * from books where id = ?";
+            PreparedStatement selectQuery = connection.prepareStatement(select);
             selectQuery.setInt(1, bookId);
-            ResultSet resultSet = selectQuery.executeQuery(); // Результат запроса
+            ResultSet resultSet = selectQuery.executeQuery();
             System.out.println(resultSet);
             // Создание и вывод объекта
-            while (resultSet.next()) {
+            while (resultSet.next()){
                 System.out.println("f");
                 Book book = new Book();
                 book.setId(resultSet.getInt( "id"));
