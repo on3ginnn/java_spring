@@ -1,0 +1,54 @@
+Table users{
+  id int [primary key]
+  first_name varchar
+  second_name varchar
+  email varchar
+  phone varchar
+  login varchar
+  password varchar
+  birth_day date
+  is_active boolean
+  role_id int
+}
+
+Table book_rent_info{
+  id int [primary key]
+  book_id int
+  user_id int
+  rent_date date
+  return_date date
+  returned boolean
+}
+
+Table roles{
+  id int [primary key]
+  title varchar
+  description varchar
+}
+
+Table books {
+  id int [primary key]
+  title varchar
+  genre enum
+  copy_path varchar
+  publisher varchar
+  description varchar
+}
+
+Table authors {
+  id int [primary key]
+  name varchar
+  birth_day date
+  description varchar
+}
+
+Table books_authors{
+  book_id int
+  author_id int
+}
+
+Ref: books.id < books_authors.book_id
+Ref: authors.id < books_authors.author_id
+Ref: books.id < book_rent_info.book_id
+Ref: users.id < book_rent_info.user_id
+Ref: users.role_id < roles.id
