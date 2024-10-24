@@ -30,13 +30,13 @@ public class SpringProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		List<Book> bookList = jdbcTemplate.query("select * from books", ((rs, rowNum) -> new Book(
-				rs.getInt("id"),
-				rs.getString("title"),
-				rs.getString("author"),
-				rs.getDate("date_added")
-		)));
+//		List<Book> bookList = jdbcTemplate.query("select * from books", ((rs, rowNum) -> new Book(
+//				rs.getInt("id"),
+//				rs.getString("title"),
+//				rs.getString("author"),
+//				rs.getDate("date_added")
+//		)));
 
-		bookList.forEach(System.out::println);
+//		bookList.forEach(System.out::println);
 	}
 }

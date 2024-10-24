@@ -2,7 +2,9 @@ package spring_projects.spring_project.library.model;
 
 import jakarta.persistence.*;
 
+import lombok.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table (name = "books")
@@ -10,11 +12,8 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default-generator")
-    private Long id;
+@SequenceGenerator(name = "default_generator", sequenceName = "books_sequence", allocationSize=1)
+public class Book extends GenericModel {
 
     @Column(name="title", nullable = false)
     private String bookTitle;
@@ -40,4 +39,7 @@ public class Book {
 
     @Column(name="description")
     private String description;
+
+    @ManyToMany(mappedBy = "books")
+    List<Authors> authors;
 }
