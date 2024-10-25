@@ -14,29 +14,10 @@ import java.util.List;
 @SpringBootApplication
 public class SpringProjectApplication implements CommandLineRunner {
 
-	private BookDAOBean bookDAOBean;
-
-	public SpringProjectApplication(BookDAOBean bookDAOBean) {
-		this.bookDAOBean = bookDAOBean;
-	}
-
-	@Autowired
-	private NamedParameterJdbcTemplate jdbcTemplate;
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringProjectApplication.class, args);
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-
-//		List<Book> bookList = jdbcTemplate.query("select * from books", ((rs, rowNum) -> new Book(
-//				rs.getInt("id"),
-//				rs.getString("title"),
-//				rs.getString("author"),
-//				rs.getDate("date_added")
-//		)));
-
-//		bookList.forEach(System.out::println);
-	}
+	public void run(String... args) throws Exception{}
 }
