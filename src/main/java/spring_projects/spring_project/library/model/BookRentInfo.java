@@ -1,12 +1,8 @@
 package spring_projects.spring_project.library.model;
 
 import jakarta.persistence.*;
-
 import lombok.*;
-
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Locale;
 
 @Entity
 @Table (name = "book_rent_info")
