@@ -1,5 +1,7 @@
 package spring_projects.spring_project.library.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,7 @@ import org.webjars.NotFoundException;
 
 @RestController
 @RequestMapping("/authors")
+@Tag(name="Авторы", description = "Контроллер для работы с авторами")
 public class AuthorController {
     private final AuthorRepository authorRepository;
 
@@ -21,6 +24,7 @@ public class AuthorController {
         this.authorRepository = authorRepository;
     }
 
+    @Operation(description = "Получить запись по id", method = "getOneById")
     @RequestMapping(value = "/getOneById", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Authors> getOneById(@RequestParam(value="id") Long id){
         return ResponseEntity
