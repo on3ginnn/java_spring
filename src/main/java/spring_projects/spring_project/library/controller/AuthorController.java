@@ -1,5 +1,9 @@
-package spring_projects.spring_project.library.controller;
+package com.start.rayan.library.controller;
 
+import com.start.rayan.library.model.Author;
+import com.start.rayan.library.repository.AuthorRepository;
+import com.start.rayan.library.repository.BookRepository;
+import com.start.rayan.library.repository.GenericRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.crossstore.ChangeSetPersister;
@@ -10,26 +14,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import spring_projects.spring_project.library.model.Authors;
-import spring_projects.spring_project.library.repository.AuthorRepository;
 import org.webjars.NotFoundException;
 
-@RestController
-@RequestMapping("/authors")
-@Tag(name="Авторы", description = "Контроллер для работы с авторами")
-public class AuthorController {
-    private final AuthorRepository authorRepository;
 
-    public AuthorController(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+@RestController
+@RequestMapping("/authors") //http://localhost:8080/authors
+@Tag(name = "Авторы", description = "Контрллер для роботы с авторами из библиотеки")
+public class AuthorController extends GenericController<Author> {
+
+    private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
+    protected AuthorController(GenericRepository<Author> genericRepository, BookRepository bookRepository,
+                               AuthorRepository authorRepository) {
+        super(genericRepository);
+        this.bookRepository = bookRepository;
+        this.authorRepository= authorRepository;
     }
 
-    @Operation(description = "Получить запись по id", method = "getOneById")
-    @RequestMapping(value = "/getOneById", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Authors> getOneById(@RequestParam(value="id") Long id){
+    @Operation(description =  "Добавить книгу к автору")
+    @RequestMapping(value = "/add", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Author> getOneById(@RequestParam(value = "id") Long id){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(authorRepository.findById(id).orElseThrow(() -> new NotFoundException("Данные не найдены")));
-    }
 
+
+    }
 }
